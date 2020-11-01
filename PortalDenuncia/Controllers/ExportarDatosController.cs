@@ -17,7 +17,7 @@ namespace PortalDenuncia.Controllers
             return View();
         }
 
-        public void ExportarExcel()
+        public void ExportarExcel2()
         {
             List<GDistritos> listagd = new List<GDistritos>();
             int d = db.TBDISTRITOS.Count() + 1;
@@ -64,6 +64,11 @@ namespace PortalDenuncia.Controllers
             Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
             Response.BinaryWrite(excelpack.GetAsByteArray());
             Response.End();
+        }
+
+        public void ExportarExcel1()
+        {/* Agregar nueva lista
+            */
         }
     }
 }
