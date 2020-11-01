@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CerrarController.cs" />
     <Compile Include="Controllers\DelegateAccessController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
+    <Compile Include="Controllers\ExportarDatosController.cs" />
     <Compile Include="Controllers\GraficosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserAccessController.cs" />
@@ -270,6 +271,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cerrar\" />
     <Folder Include="Views\DelegateAccess\" />
+    <Folder Include="Views\ExportarDatos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
