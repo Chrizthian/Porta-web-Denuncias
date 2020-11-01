@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGrafico.cshtml";
+}
+<script src="~/Scripts/Charts/exporting.js"></script>
+<script src="~/Scripts/Charts/highcharts.js"></script>
+<h2>Grafico de Denuncias y Alertas</h2>
+<div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.getJSON("/Graficos/getData", function (data) {
+
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Denuncias y Alertas Ratio'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    accessibility: {
+                        point: {
+                            valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Alerta',
+                            y: data.alerta
+                        }, {
+                            name: 'Denuncia',
+                            y: data.denuncia
+                        }]
+                    }]
+                });
+            });
+    });
+
+
+
+</script>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0bdd6ac2834848f7a312d7b982b4ea4a" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="DBDenunciaModel.TBCOMISARIA" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBDELEGADO" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBDENUNCIA" Width="1.5" PointX="7.5" PointY="5.125" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBDISTRITO" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBESTADO" Width="1.5" PointX="5.25" PointY="16.625" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBPOLICIA" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBTIPODENUNCIA" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBTIPODOCUMan" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBUSUARIO" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="DBDenunciaModel.TBVERAZIDAD" Width="1.5" PointX="5.25" PointY="19.125" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBCOMISARIAS_TBDISTRITOS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDELEGADOS_TBCOMISARIAS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBCOMISARIAS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBPOLICIAS_TBCOMISARIAS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDELEGADOS_TBTIPODOCUMEN" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBDELEGADOS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBDISTRITOS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBESTADOS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBPOLICIAS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBTIPODENUNCIAS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBUSUARIOS" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBDENUNCIAS_TBVERAZIDAD" />
+        <AssociationConnector Association="DBDenunciaModel.FK_TBUSUARIOS_TBTIPODOCUMEN" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

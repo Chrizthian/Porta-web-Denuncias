@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "VistaDistritos";
+    Layout = "~/Views/Shared/_LayoutGrafico.cshtml";
+}
+<script src="~/Scripts/Charts/exporting.js"></script>
+<script src="~/Scripts/Charts/highcharts.js"></script>
+<h2>Denuncias y Alertas por Distrito</h2>
+<div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $.getJSON("/Graficos/DatosDistrito", function (data) {
+
+            var Nombres = []
+            var Cantidades = []
+
+            for (var i = 0; i < data.length; i++) {
+                Nombres.push(data[i].nombre);
+                Cantidades.push(data[i].cantidad);
+            }
+
+
+        Highcharts.chart('container', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Monthly Average Temperature'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: Nombres
+        },
+        yAxis: {
+            title: {
+                text: 'Cantidades'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'Denuncias',
+            data: Cantidades
+        }]
+    });
+    });
+    });
+
+</script>

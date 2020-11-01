@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PortalDenuncia.Models.TBDENUNCIA>
+
+@{
+    ViewBag.Title = "Mis denuncias y alertas";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2>Mis Denuncias y Alertas</h2>
+
+<p>
+    @Html.ActionLink("Nueva denuncia", "CrearDenuncia", "Usuarios")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Comisaria
+        </th>
+        
+        <th>
+            Distrito
+        </th>
+        <th>
+            Estado
+        </th>
+        
+        <th>
+            Tipo de denuncia
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBCOMISARIA.nombre)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.TBDISTRITO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBESTADO.nombre)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.TBTIPODENUNCIA.tipo)
+        </td>
+        
+    </tr>
+}
+
+</table>

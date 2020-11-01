@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PortalDenuncia.Models.TBDENUNCIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nueva denuncia", "CrearDenuncia","Usuarios")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Comisaria
+        </th>
+        <th>
+            Delegado
+        </th>
+        <th>
+            Distrito
+        </th>
+        <th>
+            Estado de la denuncia
+        </th>
+        <th>
+            Policia encargado
+        </th>
+        <th>
+            Tipo de denuncia
+        </th>
+        <th>
+            Denunciante
+        </th>
+        <th>
+            Verazidad
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBCOMISARIA.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBDELEGADO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBDISTRITO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBESTADO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBPOLICIA.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBTIPODENUNCIA.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBUSUARIO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBVERAZIDAD.tipo)
+        </td>
+    </tr>
+}
+
+</table>

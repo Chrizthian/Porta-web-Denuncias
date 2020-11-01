@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Entrar";
+}
+
+
+
+<h2>Usuario</h2>
+
+<div class="row">
+    <form id="frm">
+        <div class="col-lg-6 col-lg-offset-3">
+            Usuario
+            <input type="text" name="user" />
+            Password
+            <input type="password" name="password" />
+            <input type="submit" class="btn btn-success" value="entrar" />
+        </div>
+    </form>
+</div>
+<br />
+<div class="text-center">
+    @Html.ActionLink("Registrarse", "Create", "Usuarios", new { id = 0 }, null)
+</div>
+
+
+
+@section scripts{
+
+    <script>
+    $(document).ready(function () {
+        $("#frm").submit(function (e) {
+            e.preventDefault();
+            url = "@Url.Content("~/UserAccess/Index")"
+            parametros = $(this).serialize();
+            $.post(url, parametros, function (data) {
+                if (data == "1") {
+                    document.location.href = "@Url.Content("~/Usuarios/ListaDenuncia")"
+
+                } else {
+                    alert(data)
+                }
+            })
+        })
+    })
+    </script>
+}

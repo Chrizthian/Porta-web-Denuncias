@@ -1,0 +1,826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBDenunciaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBCOMISARIAS">
+          <Key>
+            <PropertyRef Name="idcomisaria" />
+          </Key>
+          <Property Name="idcomisaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="iddistrito" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBDELEGADOS">
+          <Key>
+            <PropertyRef Name="iddelegado" />
+          </Key>
+          <Property Name="iddelegado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidopa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidoma" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="numdocu" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idcomisaria" Type="int" Nullable="false" />
+          <Property Name="idtipdocu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBDENUNCIAS">
+          <Key>
+            <PropertyRef Name="iddenuncia" />
+          </Key>
+          <Property Name="iddenuncia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="direccion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="idusuario" Type="int" />
+          <Property Name="idtipo" Type="int" Nullable="false" />
+          <Property Name="iddistrito" Type="int" Nullable="false" />
+          <Property Name="idpolicia" Type="int" />
+          <Property Name="idcomisaria" Type="int" />
+          <Property Name="idestado" Type="int" Nullable="false" />
+          <Property Name="idverazidad" Type="int" />
+          <Property Name="iddelegado" Type="int" />
+        </EntityType>
+        <EntityType Name="TBDISTRITOS">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBESTADOS">
+          <Key>
+            <PropertyRef Name="idestado" />
+          </Key>
+          <Property Name="idestado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="descripcion" Type="text" />
+        </EntityType>
+        <EntityType Name="TBPOLICIAS">
+          <Key>
+            <PropertyRef Name="idpolicia" />
+          </Key>
+          <Property Name="idpolicia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dni" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidopa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidoma" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idcomisaria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBTIPODENUNCIAS">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Name="idtipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBTIPODOCUMEN">
+          <Key>
+            <PropertyRef Name="idtipdocu" />
+          </Key>
+          <Property Name="idtipdocu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBUSUARIOS">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numdocu" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidopa" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellidoma" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="celular" Type="char" MaxLength="9" />
+          <Property Name="correo" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idtipdocu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBVERAZIDAD">
+          <Key>
+            <PropertyRef Name="idverazidad" />
+          </Key>
+          <Property Name="idverazidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBCOMISARIAS_TBDISTRITOS">
+          <End Role="TBDISTRITOS" Type="Self.TBDISTRITOS" Multiplicity="1" />
+          <End Role="TBCOMISARIAS" Type="Self.TBCOMISARIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDISTRITOS">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="TBCOMISARIAS">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDELEGADOS_TBCOMISARIAS">
+          <End Role="TBCOMISARIAS" Type="Self.TBCOMISARIAS" Multiplicity="1" />
+          <End Role="TBDELEGADOS" Type="Self.TBDELEGADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIAS">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBDELEGADOS">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDELEGADOS_TBTIPODOCUMEN">
+          <End Role="TBTIPODOCUMEN" Type="Self.TBTIPODOCUMEN" Multiplicity="1" />
+          <End Role="TBDELEGADOS" Type="Self.TBDELEGADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODOCUMEN">
+              <PropertyRef Name="idtipdocu" />
+            </Principal>
+            <Dependent Role="TBDELEGADOS">
+              <PropertyRef Name="idtipdocu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBCOMISARIAS">
+          <End Role="TBCOMISARIAS" Type="Self.TBCOMISARIAS" Multiplicity="0..1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIAS">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBDELEGADOS">
+          <End Role="TBDELEGADOS" Type="Self.TBDELEGADOS" Multiplicity="0..1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDELEGADOS">
+              <PropertyRef Name="iddelegado" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="iddelegado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBDISTRITOS">
+          <End Role="TBDISTRITOS" Type="Self.TBDISTRITOS" Multiplicity="1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDISTRITOS">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBESTADOS">
+          <End Role="TBESTADOS" Type="Self.TBESTADOS" Multiplicity="1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBESTADOS">
+              <PropertyRef Name="idestado" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBPOLICIAS">
+          <End Role="TBPOLICIAS" Type="Self.TBPOLICIAS" Multiplicity="0..1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBPOLICIAS">
+              <PropertyRef Name="idpolicia" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idpolicia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBTIPODENUNCIAS">
+          <End Role="TBTIPODENUNCIAS" Type="Self.TBTIPODENUNCIAS" Multiplicity="1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODENUNCIAS">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBUSUARIOS">
+          <End Role="TBUSUARIOS" Type="Self.TBUSUARIOS" Multiplicity="0..1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBUSUARIOS">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBVERAZIDAD">
+          <End Role="TBVERAZIDAD" Type="Self.TBVERAZIDAD" Multiplicity="0..1" />
+          <End Role="TBDENUNCIAS" Type="Self.TBDENUNCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBVERAZIDAD">
+              <PropertyRef Name="idverazidad" />
+            </Principal>
+            <Dependent Role="TBDENUNCIAS">
+              <PropertyRef Name="idverazidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBPOLICIAS_TBCOMISARIAS">
+          <End Role="TBCOMISARIAS" Type="Self.TBCOMISARIAS" Multiplicity="1" />
+          <End Role="TBPOLICIAS" Type="Self.TBPOLICIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIAS">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBPOLICIAS">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBUSUARIOS_TBTIPODOCUMEN">
+          <End Role="TBTIPODOCUMEN" Type="Self.TBTIPODOCUMEN" Multiplicity="1" />
+          <End Role="TBUSUARIOS" Type="Self.TBUSUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODOCUMEN">
+              <PropertyRef Name="idtipdocu" />
+            </Principal>
+            <Dependent Role="TBUSUARIOS">
+              <PropertyRef Name="idtipdocu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBDenunciaModelStoreContainer">
+          <EntitySet Name="TBCOMISARIAS" EntityType="Self.TBCOMISARIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBDELEGADOS" EntityType="Self.TBDELEGADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBDENUNCIAS" EntityType="Self.TBDENUNCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBDISTRITOS" EntityType="Self.TBDISTRITOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBESTADOS" EntityType="Self.TBESTADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBPOLICIAS" EntityType="Self.TBPOLICIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBTIPODENUNCIAS" EntityType="Self.TBTIPODENUNCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBTIPODOCUMEN" EntityType="Self.TBTIPODOCUMEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBUSUARIOS" EntityType="Self.TBUSUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBVERAZIDAD" EntityType="Self.TBVERAZIDAD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBCOMISARIAS_TBDISTRITOS" Association="Self.FK_TBCOMISARIAS_TBDISTRITOS">
+            <End Role="TBDISTRITOS" EntitySet="TBDISTRITOS" />
+            <End Role="TBCOMISARIAS" EntitySet="TBCOMISARIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDELEGADOS_TBCOMISARIAS" Association="Self.FK_TBDELEGADOS_TBCOMISARIAS">
+            <End Role="TBCOMISARIAS" EntitySet="TBCOMISARIAS" />
+            <End Role="TBDELEGADOS" EntitySet="TBDELEGADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDELEGADOS_TBTIPODOCUMEN" Association="Self.FK_TBDELEGADOS_TBTIPODOCUMEN">
+            <End Role="TBTIPODOCUMEN" EntitySet="TBTIPODOCUMEN" />
+            <End Role="TBDELEGADOS" EntitySet="TBDELEGADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBCOMISARIAS" Association="Self.FK_TBDENUNCIAS_TBCOMISARIAS">
+            <End Role="TBCOMISARIAS" EntitySet="TBCOMISARIAS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBDELEGADOS" Association="Self.FK_TBDENUNCIAS_TBDELEGADOS">
+            <End Role="TBDELEGADOS" EntitySet="TBDELEGADOS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBDISTRITOS" Association="Self.FK_TBDENUNCIAS_TBDISTRITOS">
+            <End Role="TBDISTRITOS" EntitySet="TBDISTRITOS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBESTADOS" Association="Self.FK_TBDENUNCIAS_TBESTADOS">
+            <End Role="TBESTADOS" EntitySet="TBESTADOS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBPOLICIAS" Association="Self.FK_TBDENUNCIAS_TBPOLICIAS">
+            <End Role="TBPOLICIAS" EntitySet="TBPOLICIAS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBTIPODENUNCIAS" Association="Self.FK_TBDENUNCIAS_TBTIPODENUNCIAS">
+            <End Role="TBTIPODENUNCIAS" EntitySet="TBTIPODENUNCIAS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBUSUARIOS" Association="Self.FK_TBDENUNCIAS_TBUSUARIOS">
+            <End Role="TBUSUARIOS" EntitySet="TBUSUARIOS" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBVERAZIDAD" Association="Self.FK_TBDENUNCIAS_TBVERAZIDAD">
+            <End Role="TBVERAZIDAD" EntitySet="TBVERAZIDAD" />
+            <End Role="TBDENUNCIAS" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBPOLICIAS_TBCOMISARIAS" Association="Self.FK_TBPOLICIAS_TBCOMISARIAS">
+            <End Role="TBCOMISARIAS" EntitySet="TBCOMISARIAS" />
+            <End Role="TBPOLICIAS" EntitySet="TBPOLICIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBUSUARIOS_TBTIPODOCUMEN" Association="Self.FK_TBUSUARIOS_TBTIPODOCUMEN">
+            <End Role="TBTIPODOCUMEN" EntitySet="TBTIPODOCUMEN" />
+            <End Role="TBUSUARIOS" EntitySet="TBUSUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBDenunciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBDenunciaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBCOMISARIAS" EntityType="DBDenunciaModel.TBCOMISARIA" />
+          <EntitySet Name="TBDELEGADOS" EntityType="DBDenunciaModel.TBDELEGADO" />
+          <EntitySet Name="TBDENUNCIAS" EntityType="DBDenunciaModel.TBDENUNCIA" />
+          <EntitySet Name="TBDISTRITOS" EntityType="DBDenunciaModel.TBDISTRITO" />
+          <EntitySet Name="TBESTADOS" EntityType="DBDenunciaModel.TBESTADO" />
+          <EntitySet Name="TBPOLICIAS" EntityType="DBDenunciaModel.TBPOLICIA" />
+          <EntitySet Name="TBTIPODENUNCIAS" EntityType="DBDenunciaModel.TBTIPODENUNCIA" />
+          <EntitySet Name="TBTIPODOCUMEN" EntityType="DBDenunciaModel.TBTIPODOCUMan" />
+          <EntitySet Name="TBUSUARIOS" EntityType="DBDenunciaModel.TBUSUARIO" />
+          <EntitySet Name="TBVERAZIDADs" EntityType="DBDenunciaModel.TBVERAZIDAD" />
+          <AssociationSet Name="FK_TBCOMISARIAS_TBDISTRITOS" Association="DBDenunciaModel.FK_TBCOMISARIAS_TBDISTRITOS">
+            <End Role="TBDISTRITO" EntitySet="TBDISTRITOS" />
+            <End Role="TBCOMISARIA" EntitySet="TBCOMISARIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDELEGADOS_TBCOMISARIAS" Association="DBDenunciaModel.FK_TBDELEGADOS_TBCOMISARIAS">
+            <End Role="TBCOMISARIA" EntitySet="TBCOMISARIAS" />
+            <End Role="TBDELEGADO" EntitySet="TBDELEGADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBCOMISARIAS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBCOMISARIAS">
+            <End Role="TBCOMISARIA" EntitySet="TBCOMISARIAS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBPOLICIAS_TBCOMISARIAS" Association="DBDenunciaModel.FK_TBPOLICIAS_TBCOMISARIAS">
+            <End Role="TBCOMISARIA" EntitySet="TBCOMISARIAS" />
+            <End Role="TBPOLICIA" EntitySet="TBPOLICIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDELEGADOS_TBTIPODOCUMEN" Association="DBDenunciaModel.FK_TBDELEGADOS_TBTIPODOCUMEN">
+            <End Role="TBTIPODOCUMan" EntitySet="TBTIPODOCUMEN" />
+            <End Role="TBDELEGADO" EntitySet="TBDELEGADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBDELEGADOS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBDELEGADOS">
+            <End Role="TBDELEGADO" EntitySet="TBDELEGADOS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBDISTRITOS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBDISTRITOS">
+            <End Role="TBDISTRITO" EntitySet="TBDISTRITOS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBESTADOS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBESTADOS">
+            <End Role="TBESTADO" EntitySet="TBESTADOS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBPOLICIAS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBPOLICIAS">
+            <End Role="TBPOLICIA" EntitySet="TBPOLICIAS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBTIPODENUNCIAS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBTIPODENUNCIAS">
+            <End Role="TBTIPODENUNCIA" EntitySet="TBTIPODENUNCIAS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBUSUARIOS" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBUSUARIOS">
+            <End Role="TBUSUARIO" EntitySet="TBUSUARIOS" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBDENUNCIAS_TBVERAZIDAD" Association="DBDenunciaModel.FK_TBDENUNCIAS_TBVERAZIDAD">
+            <End Role="TBVERAZIDAD" EntitySet="TBVERAZIDADs" />
+            <End Role="TBDENUNCIA" EntitySet="TBDENUNCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBUSUARIOS_TBTIPODOCUMEN" Association="DBDenunciaModel.FK_TBUSUARIOS_TBTIPODOCUMEN">
+            <End Role="TBTIPODOCUMan" EntitySet="TBTIPODOCUMEN" />
+            <End Role="TBUSUARIO" EntitySet="TBUSUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TBCOMISARIA">
+          <Key>
+            <PropertyRef Name="idcomisaria" />
+          </Key>
+          <Property Name="idcomisaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="iddistrito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBDISTRITO" Relationship="DBDenunciaModel.FK_TBCOMISARIAS_TBDISTRITOS" FromRole="TBCOMISARIA" ToRole="TBDISTRITO" />
+          <NavigationProperty Name="TBDELEGADOS" Relationship="DBDenunciaModel.FK_TBDELEGADOS_TBCOMISARIAS" FromRole="TBCOMISARIA" ToRole="TBDELEGADO" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBCOMISARIAS" FromRole="TBCOMISARIA" ToRole="TBDENUNCIA" />
+          <NavigationProperty Name="TBPOLICIAS" Relationship="DBDenunciaModel.FK_TBPOLICIAS_TBCOMISARIAS" FromRole="TBCOMISARIA" ToRole="TBPOLICIA" />
+        </EntityType>
+        <EntityType Name="TBDELEGADO">
+          <Key>
+            <PropertyRef Name="iddelegado" />
+          </Key>
+          <Property Name="iddelegado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidopa" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoma" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cargo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numdocu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idcomisaria" Type="Int32" Nullable="false" />
+          <Property Name="idtipdocu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBCOMISARIA" Relationship="DBDenunciaModel.FK_TBDELEGADOS_TBCOMISARIAS" FromRole="TBDELEGADO" ToRole="TBCOMISARIA" />
+          <NavigationProperty Name="TBTIPODOCUMan" Relationship="DBDenunciaModel.FK_TBDELEGADOS_TBTIPODOCUMEN" FromRole="TBDELEGADO" ToRole="TBTIPODOCUMan" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBDELEGADOS" FromRole="TBDELEGADO" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <EntityType Name="TBDENUNCIA">
+          <Key>
+            <PropertyRef Name="iddenuncia" />
+          </Key>
+          <Property Name="iddenuncia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idusuario" Type="Int32" />
+          <Property Name="idtipo" Type="Int32" Nullable="false" />
+          <Property Name="iddistrito" Type="Int32" Nullable="false" />
+          <Property Name="idpolicia" Type="Int32" />
+          <Property Name="idcomisaria" Type="Int32" />
+          <Property Name="idestado" Type="Int32" Nullable="false" />
+          <Property Name="idverazidad" Type="Int32" />
+          <Property Name="iddelegado" Type="Int32" />
+          <NavigationProperty Name="TBCOMISARIA" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBCOMISARIAS" FromRole="TBDENUNCIA" ToRole="TBCOMISARIA" />
+          <NavigationProperty Name="TBDELEGADO" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBDELEGADOS" FromRole="TBDENUNCIA" ToRole="TBDELEGADO" />
+          <NavigationProperty Name="TBDISTRITO" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBDISTRITOS" FromRole="TBDENUNCIA" ToRole="TBDISTRITO" />
+          <NavigationProperty Name="TBESTADO" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBESTADOS" FromRole="TBDENUNCIA" ToRole="TBESTADO" />
+          <NavigationProperty Name="TBPOLICIA" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBPOLICIAS" FromRole="TBDENUNCIA" ToRole="TBPOLICIA" />
+          <NavigationProperty Name="TBTIPODENUNCIA" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBTIPODENUNCIAS" FromRole="TBDENUNCIA" ToRole="TBTIPODENUNCIA" />
+          <NavigationProperty Name="TBUSUARIO" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBUSUARIOS" FromRole="TBDENUNCIA" ToRole="TBUSUARIO" />
+          <NavigationProperty Name="TBVERAZIDAD" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBVERAZIDAD" FromRole="TBDENUNCIA" ToRole="TBVERAZIDAD" />
+        </EntityType>
+        <EntityType Name="TBDISTRITO">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBCOMISARIAS" Relationship="DBDenunciaModel.FK_TBCOMISARIAS_TBDISTRITOS" FromRole="TBDISTRITO" ToRole="TBCOMISARIA" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBDISTRITOS" FromRole="TBDISTRITO" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <EntityType Name="TBESTADO">
+          <Key>
+            <PropertyRef Name="idestado" />
+          </Key>
+          <Property Name="idestado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBESTADOS" FromRole="TBESTADO" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <EntityType Name="TBPOLICIA">
+          <Key>
+            <PropertyRef Name="idpolicia" />
+          </Key>
+          <Property Name="idpolicia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dni" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidopa" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoma" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cargo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idcomisaria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBCOMISARIA" Relationship="DBDenunciaModel.FK_TBPOLICIAS_TBCOMISARIAS" FromRole="TBPOLICIA" ToRole="TBCOMISARIA" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBPOLICIAS" FromRole="TBPOLICIA" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <EntityType Name="TBTIPODENUNCIA">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Name="idtipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBTIPODENUNCIAS" FromRole="TBTIPODENUNCIA" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <EntityType Name="TBTIPODOCUMan">
+          <Key>
+            <PropertyRef Name="idtipdocu" />
+          </Key>
+          <Property Name="idtipdocu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBDELEGADOS" Relationship="DBDenunciaModel.FK_TBDELEGADOS_TBTIPODOCUMEN" FromRole="TBTIPODOCUMan" ToRole="TBDELEGADO" />
+          <NavigationProperty Name="TBUSUARIOS" Relationship="DBDenunciaModel.FK_TBUSUARIOS_TBTIPODOCUMEN" FromRole="TBTIPODOCUMan" ToRole="TBUSUARIO" />
+        </EntityType>
+        <EntityType Name="TBUSUARIO">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numdocu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidopa" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoma" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idtipdocu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBUSUARIOS" FromRole="TBUSUARIO" ToRole="TBDENUNCIA" />
+          <NavigationProperty Name="TBTIPODOCUMan" Relationship="DBDenunciaModel.FK_TBUSUARIOS_TBTIPODOCUMEN" FromRole="TBUSUARIO" ToRole="TBTIPODOCUMan" />
+        </EntityType>
+        <EntityType Name="TBVERAZIDAD">
+          <Key>
+            <PropertyRef Name="idverazidad" />
+          </Key>
+          <Property Name="idverazidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBDENUNCIAS" Relationship="DBDenunciaModel.FK_TBDENUNCIAS_TBVERAZIDAD" FromRole="TBVERAZIDAD" ToRole="TBDENUNCIA" />
+        </EntityType>
+        <Association Name="FK_TBCOMISARIAS_TBDISTRITOS">
+          <End Type="DBDenunciaModel.TBDISTRITO" Role="TBDISTRITO" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBCOMISARIA" Role="TBCOMISARIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDISTRITO">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="TBCOMISARIA">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDELEGADOS_TBCOMISARIAS">
+          <End Type="DBDenunciaModel.TBCOMISARIA" Role="TBCOMISARIA" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBDELEGADO" Role="TBDELEGADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIA">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBDELEGADO">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBCOMISARIAS">
+          <End Type="DBDenunciaModel.TBCOMISARIA" Role="TBCOMISARIA" Multiplicity="0..1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIA">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBPOLICIAS_TBCOMISARIAS">
+          <End Type="DBDenunciaModel.TBCOMISARIA" Role="TBCOMISARIA" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBPOLICIA" Role="TBPOLICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBCOMISARIA">
+              <PropertyRef Name="idcomisaria" />
+            </Principal>
+            <Dependent Role="TBPOLICIA">
+              <PropertyRef Name="idcomisaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDELEGADOS_TBTIPODOCUMEN">
+          <End Type="DBDenunciaModel.TBTIPODOCUMan" Role="TBTIPODOCUMan" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBDELEGADO" Role="TBDELEGADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODOCUMan">
+              <PropertyRef Name="idtipdocu" />
+            </Principal>
+            <Dependent Role="TBDELEGADO">
+              <PropertyRef Name="idtipdocu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBDELEGADOS">
+          <End Type="DBDenunciaModel.TBDELEGADO" Role="TBDELEGADO" Multiplicity="0..1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDELEGADO">
+              <PropertyRef Name="iddelegado" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="iddelegado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBDISTRITOS">
+          <End Type="DBDenunciaModel.TBDISTRITO" Role="TBDISTRITO" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBDISTRITO">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBESTADOS">
+          <End Type="DBDenunciaModel.TBESTADO" Role="TBESTADO" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBESTADO">
+              <PropertyRef Name="idestado" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBPOLICIAS">
+          <End Type="DBDenunciaModel.TBPOLICIA" Role="TBPOLICIA" Multiplicity="0..1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBPOLICIA">
+              <PropertyRef Name="idpolicia" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idpolicia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBTIPODENUNCIAS">
+          <End Type="DBDenunciaModel.TBTIPODENUNCIA" Role="TBTIPODENUNCIA" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODENUNCIA">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBUSUARIOS">
+          <End Type="DBDenunciaModel.TBUSUARIO" Role="TBUSUARIO" Multiplicity="0..1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBUSUARIO">
+              <PropertyRef Name="idusuario" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBDENUNCIAS_TBVERAZIDAD">
+          <End Type="DBDenunciaModel.TBVERAZIDAD" Role="TBVERAZIDAD" Multiplicity="0..1" />
+          <End Type="DBDenunciaModel.TBDENUNCIA" Role="TBDENUNCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBVERAZIDAD">
+              <PropertyRef Name="idverazidad" />
+            </Principal>
+            <Dependent Role="TBDENUNCIA">
+              <PropertyRef Name="idverazidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBUSUARIOS_TBTIPODOCUMEN">
+          <End Type="DBDenunciaModel.TBTIPODOCUMan" Role="TBTIPODOCUMan" Multiplicity="1" />
+          <End Type="DBDenunciaModel.TBUSUARIO" Role="TBUSUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBTIPODOCUMan">
+              <PropertyRef Name="idtipdocu" />
+            </Principal>
+            <Dependent Role="TBUSUARIO">
+              <PropertyRef Name="idtipdocu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBDenunciaModelStoreContainer" CdmEntityContainer="DBDenunciaEntities">
+          <EntitySetMapping Name="TBCOMISARIAS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBCOMISARIA">
+              <MappingFragment StoreEntitySet="TBCOMISARIAS">
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idcomisaria" ColumnName="idcomisaria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBDELEGADOS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBDELEGADO">
+              <MappingFragment StoreEntitySet="TBDELEGADOS">
+                <ScalarProperty Name="idtipdocu" ColumnName="idtipdocu" />
+                <ScalarProperty Name="idcomisaria" ColumnName="idcomisaria" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="numdocu" ColumnName="numdocu" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="apellidoma" ColumnName="apellidoma" />
+                <ScalarProperty Name="apellidopa" ColumnName="apellidopa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="iddelegado" ColumnName="iddelegado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBDENUNCIAS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBDENUNCIA">
+              <MappingFragment StoreEntitySet="TBDENUNCIAS">
+                <ScalarProperty Name="iddelegado" ColumnName="iddelegado" />
+                <ScalarProperty Name="idverazidad" ColumnName="idverazidad" />
+                <ScalarProperty Name="idestado" ColumnName="idestado" />
+                <ScalarProperty Name="idcomisaria" ColumnName="idcomisaria" />
+                <ScalarProperty Name="idpolicia" ColumnName="idpolicia" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="iddenuncia" ColumnName="iddenuncia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBDISTRITOS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBDISTRITO">
+              <MappingFragment StoreEntitySet="TBDISTRITOS">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBESTADOS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBESTADO">
+              <MappingFragment StoreEntitySet="TBESTADOS">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idestado" ColumnName="idestado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBPOLICIAS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBPOLICIA">
+              <MappingFragment StoreEntitySet="TBPOLICIAS">
+                <ScalarProperty Name="idcomisaria" ColumnName="idcomisaria" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="apellidoma" ColumnName="apellidoma" />
+                <ScalarProperty Name="apellidopa" ColumnName="apellidopa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="idpolicia" ColumnName="idpolicia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBTIPODENUNCIAS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBTIPODENUNCIA">
+              <MappingFragment StoreEntitySet="TBTIPODENUNCIAS">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBTIPODOCUMEN">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBTIPODOCUMan">
+              <MappingFragment StoreEntitySet="TBTIPODOCUMEN">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="idtipdocu" ColumnName="idtipdocu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBUSUARIOS">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBUSUARIO">
+              <MappingFragment StoreEntitySet="TBUSUARIOS">
+                <ScalarProperty Name="idtipdocu" ColumnName="idtipdocu" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="apellidoma" ColumnName="apellidoma" />
+                <ScalarProperty Name="apellidopa" ColumnName="apellidopa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="numdocu" ColumnName="numdocu" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBVERAZIDADs">
+            <EntityTypeMapping TypeName="DBDenunciaModel.TBVERAZIDAD">
+              <MappingFragment StoreEntitySet="TBVERAZIDAD">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="idverazidad" ColumnName="idverazidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
