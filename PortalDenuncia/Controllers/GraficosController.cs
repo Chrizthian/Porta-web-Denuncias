@@ -45,18 +45,7 @@ namespace PortalDenuncia.Controllers
                 listagd.Insert(i-1, new GDistritos(tbdistritos.nombre, valdenuncias));
 
             }
-            /*
-            int i = 1; 
-            while (i < d)
-            {
-                var tbdistritos = db.TBDISTRITOS.Where(t => t.iddistrito == i).First();
-                int valdenuncias = db.TBDENUNCIAS.Where(u => u.iddistrito == i).Count();
-
-                gdistrito.nombre = tbdistritos.nombre;
-                gdistrito.cantidad = valdenuncias;
-                listagd.Insert(i - 1, gdistrito);
-                i++;
-            }*/
+            
 
             return Json(listagd, JsonRequestBehavior.AllowGet);
         }
