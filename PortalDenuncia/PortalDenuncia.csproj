@@ -137,6 +137,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CerrarController.cs" />
+    <Compile Include="Controllers\DelegadoController.cs" />
     <Compile Include="Controllers\DelegateAccessController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\ExportarDatosController.cs" />
@@ -149,6 +150,7 @@
     </Compile>
     <Compile Include="Models\DenunciaCount.cs" />
     <Compile Include="Models\DenunciaF.cs" />
+    <Compile Include="Models\DenunciaRep.cs" />
     <Compile Include="Models\DenunciasModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,6 +272,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cerrar\" />
+    <Folder Include="Views\Delegado\" />
     <Folder Include="Views\DelegateAccess\" />
     <Folder Include="Views\ExportarDatos\" />
   </ItemGroup>
