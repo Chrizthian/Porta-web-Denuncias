@@ -35,7 +35,7 @@ namespace PortalDenuncia.Controllers
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage excelpack = new ExcelPackage();
-            ExcelWorksheet excelshe = excelpack.Workbook.Worksheets.Add("Report");
+            ExcelWorksheet excelshe = excelpack.Workbook.Worksheets.Add("Cifras");
 
             excelshe.Cells["A1"].Value = "Denuncias";
             excelshe.Cells["B1"].Value = "Distritos";

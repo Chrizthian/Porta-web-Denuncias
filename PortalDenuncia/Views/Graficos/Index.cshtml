@@ -9,8 +9,12 @@
 <div>
     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 </div>
-<a href="@Url.Action("ExportarExcel1","ExportarDatos")">Exportar Excel</a>
-<a href="@Url.Action("ExportarDelegado1","Delegado")">Exportar Excel</a>
+<p>Exportar Numero de Deuncias y alertas</p>
+<button type="button" onclick="location.href='@Url.Action("ExportarExcel1", "ExportarDatos")'">Exportar</button>
+
+<p>Exportar Denuncias y Alertas</p>
+<button type="button" onclick="location.href='@Url.Action("ExportarDelegado1", "Delegado")'">Exportar</button>
+
 <script>
 
     $(document).ready(function () {

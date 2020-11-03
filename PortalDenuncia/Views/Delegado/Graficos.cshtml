@@ -1,7 +1,79 @@
 ﻿
 @{
     ViewBag.Title = "Graficos";
+    Layout = "~/Views/Shared/_LayoutGrafico.cshtml";
 }
+<script src="~/Scripts/Charts/exporting.js"></script>
+<script src="~/Scripts/Charts/highcharts.js"></script>
 
 <h2>Graficos</h2>
 
+<div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/Delegado/DelegadoDraf1", function (data) {
+
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Denuncias del Distrito'
+                },
+                xAxis: {
+                    categories: ['Denuncias'],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cantidad',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' millions'
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Denuncias',
+                    data: data.denuncia
+                }, {
+                    name: 'Alertas',
+                    data: data.alerta
+                }]
+            });    
+
+        });
+    });
+</script>

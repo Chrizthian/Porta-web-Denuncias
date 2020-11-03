@@ -19,6 +19,11 @@ namespace PortalDenuncia.Controllers
             return View();
         }
 
+        public ActionResult Graficos()
+        {
+            return View();
+        }
+
         public ActionResult ListaDenuncia()
         {
             TBDELEGADO tbdelegado = (TBDELEGADO)Session["delegado"];
@@ -100,7 +105,7 @@ namespace PortalDenuncia.Controllers
             //Realizar transformacion
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ExcelPackage excelpack = new ExcelPackage();
-            ExcelWorksheet excelshed = excelpack.Workbook.Worksheets.Add("Denuncias");
+            ExcelWorksheet excelshed = excelpack.Workbook.Worksheets.Add("Alertas");
 
             excelshed.Cells["A1"].Value = "Alertas";
             excelshed.Cells["B1"].Value = "Distritos";
@@ -134,7 +139,7 @@ namespace PortalDenuncia.Controllers
 
             excelshed.Cells["A:AZ"].AutoFitColumns();
 
-            ExcelWorksheet excelshea = excelpack.Workbook.Worksheets.Add("Alertas");
+            ExcelWorksheet excelshea = excelpack.Workbook.Worksheets.Add("Denuncias");
 
             excelshea.Cells["A1"].Value = "Denuncias";
             excelshea.Cells["B1"].Value = "Distritos";
