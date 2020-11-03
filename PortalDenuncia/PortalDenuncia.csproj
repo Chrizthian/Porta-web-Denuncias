@@ -269,11 +269,11 @@
     <Content Include="Views\Graficos\VistaDistritos.cshtml" />
     <Content Include="Views\Graficos\DatosDistrito.cshtml" />
     <Content Include="Views\Delegado\ListaDenuncia.cshtml" />
+    <Content Include="Views\DelegateAccess\Entrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cerrar\" />
-    <Folder Include="Views\DelegateAccess\" />
     <Folder Include="Views\ExportarDatos\" />
   </ItemGroup>
   <ItemGroup>
