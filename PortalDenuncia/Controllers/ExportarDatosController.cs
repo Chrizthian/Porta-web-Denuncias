@@ -41,7 +41,7 @@ namespace PortalDenuncia.Controllers
             excelshe.Cells["B1"].Value = "Distritos";
 
             excelshe.Cells["A2"].Value = "Reporte";
-            excelshe.Cells["B2"].Value = "Reporte 1";
+            excelshe.Cells["B2"].Value = "Reporte 2";
 
             excelshe.Cells["A3"].Value = "Fecha";
             excelshe.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
@@ -69,6 +69,38 @@ namespace PortalDenuncia.Controllers
         public void ExportarExcel1()
         {/* Agregar nueva lista
             */
+            //Obtener Registros
+            DenunciaCount denuncian = new DenunciaCount();
+            denuncian.alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1).Count();
+            denuncian.denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2).Count();
+
+            //Realizar transformacion
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage excelpack = new ExcelPackage();
+            ExcelWorksheet excelshe = excelpack.Workbook.Worksheets.Add("Report");
+
+            excelshe.Cells["A1"].Value = "Denuncias";
+            excelshe.Cells["B1"].Value = "Alertas";
+
+            excelshe.Cells["A2"].Value = "Reporte";
+            excelshe.Cells["B2"].Value = "Reporte 1";
+
+            excelshe.Cells["A3"].Value = "Fecha";
+            excelshe.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
+
+            excelshe.Cells["A6"].Value = "Numero de Denuncias";
+            excelshe.Cells["B6"].Value = "Numero de Alertas";
+
+            excelshe.Cells["A7"].Value = denuncian.denuncia;
+            excelshe.Cells["B7"].Value = denuncian.alerta;
+
+
+            excelshe.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");
+            Response.BinaryWrite(excelpack.GetAsByteArray());
+            Response.End();
         }
     }
 }
