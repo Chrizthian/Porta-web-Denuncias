@@ -35,6 +35,8 @@ namespace PortalDenuncia.Controllers
 
         public ActionResult DelegadoDraf1()
         {
+            //conectar con el grafico
+            //falta la vista
             DenunciaCount denuncian = new DenunciaCount();
             denuncian.alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1).Count();
             denuncian.denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2).Count();
