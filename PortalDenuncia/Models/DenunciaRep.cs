@@ -7,16 +7,16 @@ namespace PortalDenuncia.Models
 {
     public class DenunciaRep
     {
-        int codigo { get; set; }
-        String detalle { get; set; }
-        String direccion { get; set; }
-        String tipod { get; set; }
-        String distrrito { get; set; }
-        String estado { get; set; }
-        String veracidad { get; set; }
+        public int codigo { get; set; }
+        public string detalle { get; set; }
+        public string direccion { get; set; }
+        public string tipod { get; set; }
+        public string distrrito { get; set; }
+        public string estado { get; set; }
+        public string veracidad { get; set; }
 
-        public DenunciaRep(int codigo, String detalle, String direccion, String tipod, String distrrito, 
-            String estado, String veracidad)
+        public DenunciaRep(int codigo, string detalle, string direccion, string tipod, string distrrito,
+            string estado, string veracidad)
         {
             this.codigo = codigo;
             this.detalle = detalle;

@@ -1,6 +1,8 @@
 ﻿using PortalDenuncia.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +11,7 @@ namespace PortalDenuncia.Controllers
 {
     public class DelegadoController : Controller
     {
+        private DBDenunciaEntities db = new DBDenunciaEntities();
         // GET: Delegado
         public ActionResult Index()
         {
@@ -17,14 +20,17 @@ namespace PortalDenuncia.Controllers
 
         public ActionResult ListaDenuncia()
         {
-            TBDELEGADO tbusuario = (TBDELEGADO)Session["delegado"];
+            TBDELEGADO tbdelegado = (TBDELEGADO)Session["delegado"];
 
             var tBDENUNCIAS = db.TBDENUNCIAS
                 .Include(t => t.TBCOMISARIA)
                 .Include(t => t.TBDISTRITO)
                 .Include(t => t.TBESTADO)
-                .Include(t => t.TBTIPODENUNCIA);
-            return View(tBDENUNCIAS.Where(u => u.idusuario == tbusuario.idusuario).ToList());
+                .Include(t => t.TBPOLICIA)
+                .Include(t => t.TBTIPODENUNCIA)
+                .Include(t => t.TBVERAZIDAD);
+
+            return View(tBDENUNCIAS.Where(u => u.iddelegado == tbdelegado.iddelegado).ToList());
         }
     }
 }

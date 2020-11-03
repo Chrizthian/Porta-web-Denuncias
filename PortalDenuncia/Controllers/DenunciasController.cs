@@ -17,7 +17,15 @@ namespace PortalDenuncia.Controllers
         // GET: Denuncias
         public ActionResult Index()
         {
-            var tBDENUNCIAS = db.TBDENUNCIAS.Include(t => t.TBCOMISARIA).Include(t => t.TBDELEGADO).Include(t => t.TBDISTRITO).Include(t => t.TBESTADO).Include(t => t.TBPOLICIA).Include(t => t.TBTIPODENUNCIA).Include(t => t.TBUSUARIO).Include(t => t.TBVERAZIDAD);
+            var tBDENUNCIAS = db.TBDENUNCIAS
+                .Include(t => t.TBCOMISARIA)
+                .Include(t => t.TBDELEGADO)
+                .Include(t => t.TBDISTRITO)
+                .Include(t => t.TBESTADO)
+                .Include(t => t.TBPOLICIA)
+                .Include(t => t.TBTIPODENUNCIA)
+                .Include(t => t.TBUSUARIO)
+                .Include(t => t.TBVERAZIDAD);
             return View(tBDENUNCIAS.ToList());
         }
 
