@@ -10,12 +10,7 @@ namespace PortalDenuncia.Controllers
     public class DelegateAccessController : Controller
     {
         // GET: DelegateAccess
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Entrar(string user, string password)
+        public ActionResult Index(string user, string password)
         {
             try
             {
@@ -40,6 +35,12 @@ namespace PortalDenuncia.Controllers
             {
                 return Content("Ocurrio un error" + ex.Message);
             }
+            
+        }
+
+        public ActionResult Entrar()
+        {
+            return View();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Entrar";
 }
 
 
@@ -31,7 +31,7 @@
     $(document).ready(function () {
         $("#frm").submit(function (e) {
             e.preventDefault();
-            url = "@Url.Content("~/DelegateAccess/Entrar")"
+            url = "@Url.Content("~/DelegateAccess/Index")"
             parametros = $(this).serialize();
             $.post(url, parametros, function (data) {
                 if (data == "1") {
