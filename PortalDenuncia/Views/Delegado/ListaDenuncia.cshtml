@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PortalDenuncia.Models.TBDENUNCIA>
+
+@{
+    ViewBag.Title = "ListaDenuncia";
+}
+
+<h2>ListaDenuncia</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBCOMISARIA.nombre)
+        </th>
+        <th>
+            Distrito
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Policia Asignado
+        </th>
+        <th>
+            Tipo de Denuncia
+        </th>
+        <th>
+            Veracidad
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBCOMISARIA.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBDELEGADO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBDISTRITO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBESTADO.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBPOLICIA.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBTIPODENUNCIA.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBUSUARIO.numdocu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBVERAZIDAD.tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.iddenuncia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.iddenuncia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.iddenuncia })
+        </td>
+    </tr>
+}
+
+</table>
