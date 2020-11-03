@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PortalDenuncia.Models
 {
-    public class DenunciaRep
+    public class AlertaRep
     {
         public int codigo { get; set; }
         public string detalle { get; set; }
@@ -15,7 +15,7 @@ namespace PortalDenuncia.Models
         public string estado { get; set; }
         public string veracidad { get; set; }
 
-        public DenunciaRep(int codigo, string detalle, string direccion, string tipod, string distrrito,
+        public AlertaRep(int codigo, string detalle, string direccion, string tipod, string distrrito,
             string estado, string veracidad)
         {
             this.codigo = codigo;
@@ -26,7 +26,7 @@ namespace PortalDenuncia.Models
             this.estado = estado;
             this.veracidad = veracidad;
         }
-        public DenunciaRep()
+        public AlertaRep()
         {
 
         }

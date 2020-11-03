@@ -96,6 +96,7 @@ namespace PortalDenuncia.Controllers
 
 
             excelshe.Cells["A:AZ"].AutoFitColumns();
+
             Response.Clear();
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             Response.AddHeader("content-disposition", "attachment: filename=" + "ExcelReport.xlsx");

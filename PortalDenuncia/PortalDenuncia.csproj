@@ -148,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlertaRep.cs" />
     <Compile Include="Models\DenunciaCount.cs" />
     <Compile Include="Models\DenunciaF.cs" />
     <Compile Include="Models\DenunciaRep.cs" />
