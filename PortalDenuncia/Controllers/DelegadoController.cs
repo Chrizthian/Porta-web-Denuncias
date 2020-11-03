@@ -37,12 +37,13 @@ namespace PortalDenuncia.Controllers
         public ActionResult DelegadoDraf1()
         {
             //conectar con el grafico
+            TBDELEGADO otbdelegado = (TBDELEGADO)Session["delegado"];
             //falta la vista
-            DenunciaCount denuncian = new DenunciaCount();
-            denuncian.alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1).Count();
-            denuncian.denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2).Count();
+            DenunciaCount denunciand = new DenunciaCount();
+            denunciand.alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1 && x.idcomisaria == otbdelegado.idcomisaria).Count();
+            denunciand.denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2 && x.idcomisaria == otbdelegado.idcomisaria).Count();
 
-            return Json(denuncian, JsonRequestBehavior.AllowGet);
+            return Json(denunciand, JsonRequestBehavior.AllowGet);
         }
 
         public void ExportarDelegado1()
@@ -139,7 +140,7 @@ namespace PortalDenuncia.Controllers
             excelshea.Cells["B1"].Value = "Distritos";
 
             excelshea.Cells["A2"].Value = "Reporte";
-            excelshea.Cells["B2"].Value = "Reporte 2";
+            excelshea.Cells["B2"].Value = "Reporte 3";
 
             excelshea.Cells["A3"].Value = "Fecha";
             excelshea.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);

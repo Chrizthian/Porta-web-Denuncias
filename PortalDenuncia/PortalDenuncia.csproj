@@ -271,6 +271,7 @@
     <Content Include="Views\Graficos\DatosDistrito.cshtml" />
     <Content Include="Views\Delegado\ListaDenuncia.cshtml" />
     <Content Include="Views\DelegateAccess\Entrar.cshtml" />
+    <Content Include="Views\Delegado\Graficos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
