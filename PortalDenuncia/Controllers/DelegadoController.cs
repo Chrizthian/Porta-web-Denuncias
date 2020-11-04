@@ -36,7 +36,7 @@ namespace PortalDenuncia.Controllers
                 .Include(t => t.TBTIPODENUNCIA)
                 .Include(t => t.TBVERAZIDAD);
 
-            return View(tBDENUNCIAS.Where(u => u.iddelegado == tbdelegado.iddelegado).ToList());
+            return View(tBDENUNCIAS.Where(u => u.iddelegado == tbdelegado.idcomisaria).ToList());
         }
 
         public ActionResult DelegadoDraf1()

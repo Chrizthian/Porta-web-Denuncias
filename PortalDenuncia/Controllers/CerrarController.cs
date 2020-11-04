@@ -19,5 +19,10 @@ namespace PortalDenuncia.Controllers
             Session["usuario"] = null;
             return RedirectToAction("Entrar", "UserAccess");
         }
+        public ActionResult Cerrard()
+        {
+            Session["delegado"] = null;
+            return RedirectToAction("Entrar", "DelegateAccess");
+        }
     }
 }
