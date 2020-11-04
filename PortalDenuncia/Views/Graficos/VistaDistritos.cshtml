@@ -10,7 +10,9 @@
     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 </div>
 
-<a href="@Url.Action("ExportarExcel1","ExportarDatos")">Exportar Excel</a>
+<p>Exportar Cantidad de Denuncias y Alertas</p>
+<button type="button" onclick="location.href='@Url.Action("ExportarExcel2", "ExportarDatos")'">Exportar</button>
+
 
 <script>
 
@@ -26,38 +28,35 @@
             }
 
 
-        Highcharts.chart('container', {
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: 'Monthly Average Temperature'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
-        },
-        xAxis: {
-            categories: Nombres
-        },
-        yAxis: {
-            title: {
-                text: 'Cantidades'
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'line'
                 },
-                enableMouseTracking: false
-            }
-        },
-        series: [{
-            name: 'Denuncias',
-            data: Cantidades
-        }]
-    });
-    });
+                title: {
+                    text: 'Cantidad de denuncias por distrito'
+                },
+                xAxis: {
+                    categories: Nombres
+                },
+                yAxis: {
+                    title: {
+                        text: 'Cantidad'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Denuncias y Alertas',
+                    data: Cantidades
+                }]
+            });
+        });
     });
 
 </script>

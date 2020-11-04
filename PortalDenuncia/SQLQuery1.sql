@@ -2,4 +2,4 @@
 
 select * from TBDENUNCIAS
 
-select * from TBCOMISARIAS
+select * from TBTIPODENUNCIAS
