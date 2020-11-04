@@ -9,5 +9,18 @@ namespace PortalDenuncia.Models
     {
         public int alerta { get; set; }
         public int denuncia { get; set; }
+
+        public DenunciaCount()
+        {
+
+        }
+
+        public DenunciaCount(int alerta, int denuncia)
+        {
+            this.alerta = alerta;
+            this.denuncia = denuncia;
+        }
     }
+
 }
+

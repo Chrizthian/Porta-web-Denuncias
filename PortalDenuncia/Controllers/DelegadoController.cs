@@ -44,11 +44,13 @@ namespace PortalDenuncia.Controllers
             //conectar con el grafico
             TBDELEGADO otbdelegado = (TBDELEGADO)Session["delegado"];
             //falta la vista
-            DenunciaCount denunciand = new DenunciaCount();
-            denunciand.alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1 && x.idcomisaria == otbdelegado.idcomisaria).Count();
-            denunciand.denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2 && x.idcomisaria == otbdelegado.idcomisaria).Count();
+            DenunciaCount count1 = new DenunciaCount
+            {
+                alerta = db.TBDENUNCIAS.Where(x => x.idtipo == 1 && x.idcomisaria == otbdelegado.idcomisaria).Count(),
+                denuncia = db.TBDENUNCIAS.Where(x => x.idtipo == 2 && x.idcomisaria == otbdelegado.idcomisaria).Count()
+            };
 
-            return Json(denunciand, JsonRequestBehavior.AllowGet);
+            return Json(count1, JsonRequestBehavior.AllowGet);
         }
 
         public void ExportarDelegado1()

@@ -272,6 +272,7 @@
     <Content Include="Views\Delegado\ListaDenuncia.cshtml" />
     <Content Include="Views\DelegateAccess\Entrar.cshtml" />
     <Content Include="Views\Delegado\Graficos.cshtml" />
+    <Content Include="Views\Shared\_LayoutDelegado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
