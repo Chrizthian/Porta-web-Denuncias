@@ -14,6 +14,7 @@ namespace PortalDenuncia.Models
         public int idusuario { get; set; }
         [Required]
         [Display(Name ="Numero de documento")]
+        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         public string numdocu { get; set; }
         [Required]
         [Display(Name ="Nombre")]
