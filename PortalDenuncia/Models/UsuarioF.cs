@@ -28,6 +28,7 @@ namespace PortalDenuncia.Models
         public string celular { get; set; }
         [Display(Name ="Correo")]
         [DataType(DataType.EmailAddress)]
+        [StringLength(20, ErrorMessage = "No puede tener más de 20 caracteres")]
         public string correo { get; set; }
         [Required]
         [Display(Name ="Password")]
