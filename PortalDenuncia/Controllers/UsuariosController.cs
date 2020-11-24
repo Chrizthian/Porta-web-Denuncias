@@ -37,9 +37,20 @@ namespace PortalDenuncia.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TBUSUARIOS.Add(tBUSUARIO);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                if (tBUSUARIO.ValidarUsuario(tBUSUARIO.numdocu) == true)
+                {
+                    db.TBUSUARIOS.Add(tBUSUARIO);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("numdocu", "Ya existe un usuario con este numero de documento");
+                    
+                    ViewBag.idtipdocu = new SelectList(db.TBTIPODOCUMEN, "idtipdocu", "tipo", tBUSUARIO.idtipdocu);
+                    return View(tBUSUARIO);
+                }
+                
             }
 
             ViewBag.idtipdocu = new SelectList(db.TBTIPODOCUMEN, "idtipdocu", "tipo", tBUSUARIO.idtipdocu);
