@@ -48,6 +48,7 @@ namespace PortalDenuncia.Models
     public partial class TBUSUARIO
     {
         public String valicontra { get; set; }
+        
 
         private DBDenunciaEntities db = new DBDenunciaEntities();
         public Boolean ValidarUsuario(string documento)
