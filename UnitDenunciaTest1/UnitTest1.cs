@@ -22,18 +22,31 @@ namespace UnitDenunciaTest1
             var resultado = persona.ValidarUsuario(numero);
             //
             Assert.IsTrue(resultado);
-        }
+        }*/
 
+        /*
         [TestMethod]
         public void ProbandoelmensajeErrorViewbag()
         {
-            UsuariosController control = new UsuariosController();
+            
+
+            string documentos = null;
+            TBUSUARIO usuarioprueba = new TBUSUARIO();
+
+            usuarioprueba.ValidarUsuario = false;
+
+            var mockTbusuario = new Mock<TBUSUARIO>();
+            mockTbusuario.Setup(sp => sp.ValidarUsuario(documentos)).Returns(false);
+
+            UsuariosController control = new UsuariosController(mockTbusuario.Object);
+
+            var resultado = control.Create(usuarioprueba);
 
 
-            var resultado = control;
             Assert.IsNotNull(resultado)
         }
         */
+
         [TestMethod]
         public void ProbandoDevulucionViewUsuariosController()
         {
