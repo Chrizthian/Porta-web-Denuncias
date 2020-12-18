@@ -13,14 +13,14 @@ namespace UnitDenunciaTest1
         /*[TestMethod]
         public void ProbandoUsuariosRegistrados()
         {
-            //
+            //Organizar
             var persona = new TBUSUARIO();
             var mockusuarios = new Mock<TBUSUARIO>();
             mockusuarios.SetupGet(x => x.usuariop).Returns();
             var numero = "12354789";
-            //
+            //Actuar
             var resultado = persona.ValidarUsuario(numero);
-            //
+            //Afirmar
             Assert.IsTrue(resultado);
         }*/
 
@@ -29,7 +29,7 @@ namespace UnitDenunciaTest1
         public void ProbandoelmensajeErrorViewbag()
         {
             
-
+            //Organizar
             string documentos = null;
             TBUSUARIO usuarioprueba = new TBUSUARIO();
 
@@ -38,11 +38,12 @@ namespace UnitDenunciaTest1
             var mockTbusuario = new Mock<TBUSUARIO>();
             mockTbusuario.Setup(sp => sp.ValidarUsuario(documentos)).Returns(false);
 
+            //Actuar
             UsuariosController control = new UsuariosController(mockTbusuario.Object);
 
             var resultado = control.Create(usuarioprueba);
 
-
+            //Afirmar
             Assert.IsNotNull(resultado)
         }
         */
@@ -50,10 +51,11 @@ namespace UnitDenunciaTest1
         [TestMethod]
         public void ProbandoDevulucionViewUsuariosController()
         {
+            //Organizar
             UsuariosController control = new UsuariosController();
-
+            //Actuar
             ViewResult resultado = control.Create() as ViewResult;
-
+            //Afirmar
             Assert.IsNotNull(resultado);
         }
 
